@@ -57,7 +57,7 @@ def calculadora(a, b, op):
 loop = 1
 while loop == 1:
     print("Calculadora Simples".center(30, '-'))
-    print("Somente serão realizados cálculos com números inteiros.".center(30))
+    print("Somente serão realizados cálculos com números inteiros.")
     print("Escolha uma operação para realizar:")
     print("1. Adição (+)")
     print("2. Subtração (-)")
