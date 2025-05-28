@@ -28,25 +28,26 @@ def calculadora(a, b, op):
             return 0
         elif d == 'n' and a != 0 and b ==0:
             return 0
-        while True:
-            if d == 's':
-                resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
-                while True:
-                    if resto == 's':
-                        return [a / b, a % b]
-                    elif resto == 'n':
-                        return a / b
-                    else:
-                        print("Opção inválida. Por favor, digite 's' ou 'n'.")
-            elif d == 'n':
-                resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
-                while True:
-                    if resto == 's':
-                        return [b / a, b % a]
-                    elif resto == 'n':
-                        return b / a
-                    else:
-                        print("Opção inválida. Por favor, digite 's' ou 'n'.")
+        else:
+            while True:
+                if d == 's':
+                    resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
+                    while True:
+                        if resto == 's':
+                            return [a // b, a % b]
+                        elif resto == 'n':
+                            return a // b
+                        else:
+                            print("Opção inválida. Por favor, digite 's' ou 'n'.")
+                elif d == 'n':
+                    resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
+                    while True:
+                        if resto == 's':
+                            return [b // a, b % a]
+                        elif resto == 'n':
+                            return b // a
+                        else:
+                            print("Opção inválida. Por favor, digite 's' ou 'n'.")
             else:
                 print("Opção inválida. Por favor, digite 's' ou 'n'.")
     else:
@@ -72,13 +73,16 @@ while loop == 1:
     else:
         print("Operação inválida. Por favor, escolha uma operação válida.")
 
-    continuar = input("Deseja realizar outra operação? (s/n): ").strip().lower()
-    if continuar != 's':
-        loop = 0
-        print("Obrigado por usar a calculadora!")
-        break
-    else:
-        loop = 1
-        print("Reiniciando a calculadora...")
-        
+    while True:
+        continuar = input("Deseja realizar outra operação? (s/n): ").strip().lower()
+        if continuar == 'n':
+            loop = 0
+            print("Obrigado por usar a calculadora!")
+            break
+        elif continuar == 's':
+            loop = 1
+            print("Reiniciando a calculadora...")
+            break
+        else:
+            print("Opção inválida. Por favor, digite 's' ou 'n'.")
         
