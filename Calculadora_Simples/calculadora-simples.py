@@ -64,15 +64,16 @@ while loop == 1:
     print("3. Multiplicação (*)")
     print("4. Divisão (/)")
 
-    op = input("Escolha uma operação (digite o símbolo): ").strip()
-
-    if op in ['+', '-', '*', '/']:
-        a = pegarNumero("Digite o primeiro número: ")
-        b = pegarNumero("Digite o segundo número: ")
-        resultado = calculadora(a, b, op)
-        print(f"Resultado: {resultado}")
-    else:
-        print("Operação inválida. Por favor, escolha uma operação válida.")
+    while True:
+        op = input("Escolha uma operação (digite o símbolo): ").strip()
+        if op in ['+', '-', '*', '/']:
+            a = pegarNumero("Digite o primeiro número: ")
+            b = pegarNumero("Digite o segundo número: ")
+            resultado = calculadora(a, b, op)
+            print(f"Resultado: {resultado}")
+            break
+        else:
+            print("Operação inválida. Por favor, escolha uma operação válida.")
 
     while True:
         continuar = input("Deseja realizar outra operação? (s/n): ").strip().lower()
