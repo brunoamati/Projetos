@@ -33,7 +33,7 @@ def calculadora(a, b, op):
                             resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
                             while True:
                                     if resto == 's':
-                                        return [a // b, a % b]
+                                        return (a // b, a % b)
                                     elif resto == 'n':
                                         return a // b
                                     else:
@@ -42,7 +42,7 @@ def calculadora(a, b, op):
                             resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
                             while True:
                                 if resto == 's':
-                                    return [b // a, b % a]
+                                    return (b // a, b % a)
                                 elif resto == 'n':
                                     return b // a
                                 else:
