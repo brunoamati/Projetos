@@ -30,8 +30,8 @@ def calculadora(a, b, op):
                     while True: 
                         d= input('Deseja calcular o primeiro valor dividido pelo segundo? (s/n) Caso não será calculado o inverso: ').strip().lower()
                         if d == 's':
-                            resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
                             while True:
+                                    resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
                                     if resto == 's':
                                         return (a // b, a % b)
                                     elif resto == 'n':
@@ -39,8 +39,8 @@ def calculadora(a, b, op):
                                     else:
                                         print("Opção inválida. Por favor, digite 's' ou 'n'.")
                         elif d == 'n':
-                            resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
                             while True:
+                                resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
                                 if resto == 's':
                                     return (b // a, b % a)
                                 elif resto == 'n':
