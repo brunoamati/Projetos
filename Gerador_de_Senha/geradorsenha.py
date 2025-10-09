@@ -2,7 +2,7 @@ import random
 import string
 
 def gerador(j):
-    modulosenha = string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
+    modulosenha = string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation + random.randint(0, 9)
 
     random.choice(modulosenha)
 
