@@ -12,13 +12,16 @@ def tamanho(tam):
         except ValueError:
             print('ERRO: Digite apenas numeros inteiros!')
 
-def gerador(j):
+def gerador(j, letras, num, simb):
+    prefs = "" 
+    if letras: prefs += string.ascii_letters
+    if num: prefs += string.digits
+    if simb: prefs += string.punctuation
+    if not prefs: return None
+
     senha = ''
-
-    modulosenha = string.ascii_letters + string.digits + string.punctuation
-
     for i in range(j):
-       senha += random.choice(modulosenha)
+       senha += random.choice(prefs)
     return senha
 
 def s_n(msg):
@@ -32,8 +35,16 @@ loop = 1
 while loop == 1:
     print("Bem vindo ao gerador de senha!".center(40, '-'))
     tam = tamanho("Digite o tamanho da senha: ")
-    senha = gerador(tam)
-    print(f"Senha gerada: {senha}")
+    letras = s_n("Deseja incluir letras?(s/n): ")
+    numeros = s_n("Deseja incluir numeros?(s/n): ")
+    simbolos = s_n("Deseja incluir simbolos?(s/n): ")
+    senha = gerador(tam,letras,numeros,simbolos)
+    
+    if senha:
+        print(f"Senha gerada: {senha}")
+    else:
+        print('\nERRO: Nenhuma senha gerada, precisa escolher ao menos 1 tipo de caractere!')
+    
     if not s_n("Deseja gerar outra senha? (s/n): "):
         print("Até a próxima!")
         break
