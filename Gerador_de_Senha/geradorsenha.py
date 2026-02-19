@@ -62,38 +62,47 @@ def complex(len, let, num, simb):
     else:
         return 'Essa é uma senha fraca!'
 
-
+print("Bem vindo ao gerador de senha!".center(40, '-'))
 while True:
-    print("Bem vindo ao gerador de senha!".center(40, '-'))
-    tam = tamanho("Digite o tamanho da senha: ")
-    letras = s_n("Deseja incluir letras?(s/n): ")
-    numeros = s_n("Deseja incluir numeros?(s/n): ")
-    simbolos = s_n("Deseja incluir simbolos?(s/n): ")
-    bad_char = s_n("Deseja remover os caracteres ambiguos?(s/n): ")
-    visualizar = s_n("\nGostaria de visulizar o historico de senhas salvas?(s/n): ")
-    senha = gerador(tam, letras, numeros, simbolos, bad_char)
-    complexidade = complex(tam, letras, numeros, simbolos)
+    try:
+        op = int(input("Escolha uma opção:\n1 - Nova senha \n2 - Ver Historico \n3 - Sair \n"))
+        if op == 1:
+            while True:
+                tam = tamanho("Digite o tamanho da senha: ")
+                letras = s_n("Deseja incluir letras?(s/n): ")
+                numeros = s_n("Deseja incluir numeros?(s/n): ")
+                simbolos = s_n("Deseja incluir simbolos?(s/n): ")
+                bad_char = s_n("Deseja remover os caracteres ambiguos?(s/n): ")
+                senha = gerador(tam, letras, numeros, simbolos, bad_char)
+                complexidade = complex(tam, letras, numeros, simbolos)
 
-    if visualizar:
-        try:
-            with open("senhas_geradas.txt", "r", encoding="utf-8") as arquivo:
-                historico = arquivo.read()
-                print("\nHistorico de senhas salvas".center(40, '-'))
-                print(historico if historico else "O histórico está vazio.")
-                print("-" * 40 + "\n")
-        except FileNotFoundError:
-            print("\nAinda não existe um histórico de senhas salvas.")
+                if senha:
+                    print(f"Senha gerada: {senha}")
+                    print(complexidade)
+                    agora = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+                    with open("senhas_geradas.txt", "a", encoding="utf-8") as arquivo:
+                        arquivo.write(
+                            f"[{agora}] Senha: {senha} | Força: {complexidade}\n")
+                else:
+                    print("\nERRO: Nenhuma senha gerada, precisa escolher ao menos 1 tipo de caractere!")
 
-    if senha:
-        print(f"Senha gerada: {senha}")
-        print(complexidade)
-        agora = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        with open("senhas_geradas.txt", "a", encoding="utf-8") as arquivo:
-            arquivo.write(
-                f"[{agora}] Senha: {senha} | Força: {complexidade}\n")
-    else:
-        print("\nERRO: Nenhuma senha gerada, precisa escolher ao menos 1 tipo de caractere!")
-
-    if not s_n("\nDeseja gerar outra senha? (s/n): "):
-        print("Até a próxima!")
-        break
+                if not s_n("\nDeseja gerar outra senha? (s/n): "):
+                    print("Retornando ao Menu!\n")
+                    break
+        elif op == 2:
+                    try:
+                        with open("senhas_geradas.txt", "r", encoding="utf-8") as arquivo:
+                            historico = arquivo.read()
+                            print("\nHistorico de senhas salvas".center(40, '-'))
+                            print(historico if historico else "O histórico está vazio.")
+                            print("-" * 40 + "\n")
+                            print("Retornando ao Menu!\n")
+                    except FileNotFoundError:
+                        print("\nAinda não existe um histórico de senhas salvas.")
+        elif op == 3:
+            print("Até mais!")
+            break
+        else:
+            print("Opção invalida digite 1, 2 ou 3!")
+    except ValueError:
+        print('ERRO: Digite apenas os numeros das opções!')
