@@ -11,13 +11,11 @@ def calculadora(a, b, op):
         return a + b
     elif op == '-':
         while True:
-            d = input('Deseja calcular o primeiro valor menos o segundo? (s/n) Caso não será calculado o inverso: ').strip().lower()
-            if d == 's':
+            d = s_n('Deseja calcular o primeiro valor menos o segundo? (s/n) Caso não será calculado o inverso: ')
+            if d == True:
                 return a - b
-            elif d == 'n':
-                return b - a
             else:
-                print("Opção inválida. Por favor, digite 's' ou 'n'.")
+                return b - a
     elif op == '*':
         return a * b
     elif op == '/':
@@ -26,36 +24,35 @@ def calculadora(a, b, op):
                     return "Indefinido! Divisão de 0 por 0."
                 elif a//b == 0:
                     return 0
-                elif a//b != 0 and b//a != 0:
-                    while True: 
-                        d= input('Deseja calcular o primeiro valor dividido pelo segundo? (s/n) Caso não será calculado o inverso: ').strip().lower()
-                        if d == 's':
-                            while True:
-                                    resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
-                                    if resto == 's':
-                                        return (a // b, a % b)
-                                    elif resto == 'n':
-                                        return a // b
-                                    else:
-                                        print("Opção inválida. Por favor, digite 's' ou 'n'.")
-                        elif d == 'n':
-                            while True:
-                                resto = input('Deseja saber o resto da divisão também? (s/n): ').strip().lower()
-                                if resto == 's':
-                                    return (b // a, b % a)
-                                elif resto == 'n':
-                                    return b // a
-                                else:
-                                    print("Opção inválida. Por favor, digite 's' ou 'n'.")
+                else:
+                    d= s_n('Deseja calcular o primeiro valor dividido pelo segundo? (s/n) Caso não será calculado o inverso: ')
+                    if d == True:
+                            resto = s_n('Deseja saber o resto da divisão?(s/n):')
+                            if resto == True:
+                                return (f'Divisão: {a // b}\n Resto: {a % b}')
+                            else:
+                                return a // b
+                    else:
+                        resto = s_n('Deseja saber o resto da divisão também? (s/n): ')
+                        if resto == True:
+                            return (f'Divisão: {b // a}\n Resto: {b % a}')
                         else:
-                            print("Opção inválida. Por favor, digite 's' ou 'n'.")
+                            return b//a
             except ZeroDivisionError:
                 return 0      
     else:
         return "Operação inválida. Por favor, escolha uma operação válida."
-    
-loop = 1
-while loop == 1:
+
+def s_n(msg):
+    while True:
+        resp = input(msg).strip().lower()
+        if resp == 's':
+            return True
+        if resp == 'n':
+            return False
+        print("Responda apenas com 's' ou 'n'.")
+  
+while True:
     print("Calculadora Simples".center(30, '-'))
     print("Somente serão realizados cálculos com números inteiros.")
     print("Escolha uma operação para realizar:")
@@ -75,16 +72,6 @@ while loop == 1:
         else:
             print("Operação inválida. Por favor, escolha uma operação válida.")
 
-    while True:
-        continuar = input("Deseja realizar outra operação? (s/n): ").strip().lower()
-        if continuar == 'n':
-            loop = 0
-            print("Obrigado por usar a calculadora!")
-            break
-        elif continuar == 's':
-            loop = 1
-            print("Reiniciando a calculadora...")
-            break
-        else:
-            print("Opção inválida. Por favor, digite 's' ou 'n'.")
-        
+    if not s_n('\nDeseja realizar outra operação?(s/n):'):
+        print('Até mais! Obrigado por usar minha calculadora!')
+        break
