@@ -7,39 +7,44 @@ def pegarNumero(msg):
             print("Entrada inválida. Por favor, digite um número válido.")
 
 def calculadora(a, b, op):
+    
     if op == '+':
-        return a + b
+        return f'Soma dos valores: {a + b}'
     elif op == '-':
-        while True:
             d = s_n('Deseja calcular o primeiro valor menos o segundo? (s/n) Caso não será calculado o inverso: ')
             if d == True:
-                return a - b
+                return f'Subtração dos valores: {a - b}'
             else:
-                return b - a
+                return f'Subtração dos valores invertidos: {b - a}'
     elif op == '*':
-        return a * b
+        return f'Multiplicação dos valores: {a * b}'
     elif op == '/':
             try:
                 if a == 0 and b == 0:
                     return "Indefinido! Divisão de 0 por 0."
-                elif a//b == 0:
-                    return 0
                 else:
                     d= s_n('Deseja calcular o primeiro valor dividido pelo segundo? (s/n) Caso não será calculado o inverso: ')
                     if d == True:
                             resto = s_n('Deseja saber o resto da divisão?(s/n):')
                             if resto == True:
-                                return (f'Divisão: {a // b}\n Resto: {a % b}')
+                                return (f'Divisão inteira: {a // b}\nDivisão real: {round(a/b, 2)}\nResto: {a % b}')
                             else:
-                                return a // b
+                                return (f'Divisão inteira: {a // b}\nDivisão real: {round(a/b, 2)}')
                     else:
                         resto = s_n('Deseja saber o resto da divisão também? (s/n): ')
                         if resto == True:
-                            return (f'Divisão: {b // a}\n Resto: {b % a}')
+                            return (f'Divisão inteira: {b // a}\nDivisão real: {round(b/a, 2)}\nResto: {b % a}')
                         else:
-                            return b//a
+                            return (f'Divisão inteira: {b // a}\nDivisão real: {round(b/a, 2)}')
             except ZeroDivisionError:
-                return 0      
+                return ('ERRO! Divisão com 0, impossivel determinar o valor')  
+    elif op == '**':
+            d = s_n('Deseja calcular o primeiro valor potencializado pelo o segundo? (s/n) Caso não será calculado o inverso: ')
+            if d == True:
+                return f'Potencialização dos valores: {a ** b}'
+            else:
+                return f'Potencialização dos valores invertidos: {b ** a}'
+
     else:
         return "Operação inválida. Por favor, escolha uma operação válida."
 
@@ -51,23 +56,20 @@ def s_n(msg):
         if resp == 'n':
             return False
         print("Responda apenas com 's' ou 'n'.")
-  
+
+
+print("Calculadora Simples".center(30, '-'))
+print("Somente serão realizados cálculos com números inteiros.")  
 while True:
-    print("Calculadora Simples".center(30, '-'))
-    print("Somente serão realizados cálculos com números inteiros.")
-    print("Escolha uma operação para realizar:")
-    print("1. Adição (+)")
-    print("2. Subtração (-)")
-    print("3. Multiplicação (*)")
-    print("4. Divisão (/)")
+    print("Escolha uma operação para realizar:\n1. Adição (+)\n2. Subtração (-)\n3. Multiplicação (*)\n4. Divisão (/)\n5. Potencialização(**)")
 
     while True:
         op = input("Escolha uma operação (digite o símbolo): ").strip()
-        if op in ['+', '-', '*', '/']:
+        if op in ['+', '-', '*', '/', '**']:
             a = pegarNumero("Digite o primeiro número: ")
             b = pegarNumero("Digite o segundo número: ")
             resultado = calculadora(a, b, op)
-            print(f"Resultado: {resultado}")
+            print(f"Resultado: \n{resultado}")
             break
         else:
             print("Operação inválida. Por favor, escolha uma operação válida.")
