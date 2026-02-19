@@ -12,16 +12,23 @@ def tamanho(tam):
         except ValueError:
             print('ERRO: Digite apenas numeros inteiros!')
 
-def gerador(j, letras, num, simb):
+def gerador(j, letras, num, simb, ruim = False):
     prefs = "" 
     if letras: prefs += string.ascii_letters
     if num: prefs += string.digits
     if simb: prefs += string.punctuation
     if not prefs: return None
 
+    if ruim:
+        ruins = "0O1lI|2Z5Ss6G8B`'\""
+        for char in ruins:
+            prefs = prefs.replace(char, "")
+
     senha = ''
     for i in range(j):
        senha += random.choice(prefs)
+    
+    
     return senha
 
 def s_n(msg):
@@ -49,7 +56,8 @@ while True:
     letras = s_n("Deseja incluir letras?(s/n): ")
     numeros = s_n("Deseja incluir numeros?(s/n): ")
     simbolos = s_n("Deseja incluir simbolos?(s/n): ")
-    senha = gerador(tam,letras,numeros,simbolos)
+    bad_char= s_n("Deseja remover os caracteres ambiguos?(s/n): ")
+    senha = gerador(tam,letras,numeros,simbolos,bad_char)
     complexidade = complex(tam,letras,numeros,simbolos)
     
     if senha:
@@ -61,5 +69,3 @@ while True:
     if not s_n("Deseja gerar outra senha? (s/n): "):
         print("Até a próxima!")
         break
-    
-    
