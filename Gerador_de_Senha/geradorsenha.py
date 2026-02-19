@@ -32,15 +32,10 @@ def s_n(msg):
         print("Responda apenas com 's' ou 'n'.")
 
 def complex(len, let, num, simb):
-    prefs = "" 
-    if let: prefs += string.ascii_letters
-    if num: prefs += string.digits
-    if simb: prefs += string.punctuation
-
     pontos = 0
-    if tam > 12: pontos +=1
-    if string.ascii_letters + string.digits in prefs: pontos += 1
-    if string.punctuation in prefs: pontos += 1
+    if len > 12: pontos +=1
+    if let and num: pontos += 1
+    if simb: pontos += 1
     if pontos == 3:
         return 'Essa é uma senha forte!'
     elif pontos == 2:
