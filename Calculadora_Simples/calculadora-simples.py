@@ -51,22 +51,29 @@ def s_n(msg):
         print("Responda apenas com 's' ou 'n'.")
 
 
-
 while True:
+    print("Calculadora Simples".center(30, '-'))
+    print("Somente serão realizados cálculos com números inteiros.") 
     print("Escolha uma operação para realizar:\n1. Adição (+)\n2. Subtração (-)\n3. Multiplicação (*)\n4. Divisão (/)\n5. Potencialização(**)")
-
     while True:
-        print("Calculadora Simples".center(30, '-'))
-        print("Somente serão realizados cálculos com números inteiros.")
-        op = input("Escolha uma operação (digite o símbolo): ").strip()
-        if op in ['+', '-', '*', '/', '**']:
+        opcoes = {
+            '1': '+', '+': '+', 'adição': '+', 'soma': '+', 'adicao': '+', 'mais': '+',
+            '2': '-', '-': '-', 'subtracao': '-', 'subtração': '-', 'menos': '-', 
+            '3': '*', '*': '*', 'multiplicação': '*',  'vezes': '*', 'multiplicacao': '*',
+            '4': '/', '/': '/', 'divisao': '/', 'divisão': '/',
+            '5': '**', '**': '**', 'potencialização': '**', 'potencializacao': '**', 'potencia': '**',
+        }
+        escolha = input("Escolha uma operação: ").strip()
+        
+        if escolha in opcoes:
+            op = opcoes[escolha]
             a = pegarNumero("Digite o primeiro número: ")
             b = pegarNumero("Digite o segundo número: ")
             resultado = calculadora(a, b, op)
             print(f"Resultado: \n{resultado}")
             break
         else:
-            print("Operação inválida. Por favor, escolha uma operação válida.")
+            print("Operação inválida. Por favor, tente o numero, simbolo ou nome da conta.")
 
     if not s_n('\nDeseja realizar outra operação?(s/n):'):
         print('Até mais! Obrigado por usar minha calculadora!')
