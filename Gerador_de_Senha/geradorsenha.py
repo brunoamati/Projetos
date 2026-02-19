@@ -93,7 +93,7 @@ while True:
                     try:
                         with open("senhas_geradas.txt", "r", encoding="utf-8") as arquivo:
                             historico = arquivo.read()
-                            print("\nHistorico de senhas salvas".center(40, '-'))
+                            print("Historico de senhas salvas".center(40, '-'))
                             print(historico if historico else "O histórico está vazio.")
                             print("-" * 40 + "\n")
                             print("Retornando ao Menu!\n")
