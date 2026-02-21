@@ -15,10 +15,11 @@ def calculadora(a, b, op):
     if op == '+':
         return f'Soma dos valores: {a + b}'
     elif op == '-':
-        d = s_n('Deseja calcular o primeiro valor menos o segundo? (s/n) Caso não será calculado o inverso: ')
-        if not d:
-            a, b = b, a
-        return f'Subtração dos valores: {a - b}'
+        d = s_n('Deseja saber o resultado inverso da subtração também? (s/n)')
+        if d:
+            return f'Subtração dos valores: {a - b} \nSubtração inversa dos valores: {b - a} '
+        else:
+            return f'Subtração dos valores: {a - b}'
     elif op == '*':
         return f'Multiplicação dos valores: {a * b}'
     elif op == '/':
@@ -26,17 +27,19 @@ def calculadora(a, b, op):
             if a == 0 and b == 0:
                 return "Indefinido! Divisão de 0 por 0."
             else:
-                d = s_n('Deseja calcular o primeiro valor dividido pelo segundo? (s/n) Caso não será calculado o inverso: ')
-                if not d:
-                    a, b = b, a
-                return f'Divisão inteira: {a // b}\nDivisão real: {round(a/b, 2)}\nResto: {a % b}'
+                d = s_n('Deseja saber o resultado inverso da divisão também? (s/n)')
+                if d:
+                    return f'Divisão inteira: {a // b}\nDivisão real: {round(a/b, 2)}\nResto: {a % b} \nDivisão inteira inversa: {b // a}\nDivisão real inversa: {round(b/a, 2)}\nResto inverso: {b % a}'
+                else:
+                    return f'Divisão inteira: {a // b}\nDivisão real: {round(a/b, 2)}\nResto: {a % b}'
         except ZeroDivisionError:
             return 'ERRO! Divisão com 0, impossivel determinar o valor'
     elif op == '**':
-        d = s_n('Deseja calcular o primeiro valor potencializado pelo o segundo? (s/n) Caso não será calculado o inverso: ')
+        d = s_n('Deseja saber o resultado inverso da potencialização também? (s/n)')
         if not d:
-            a, b = b, a
-        return f'Potencialização dos valores: {a ** b}'
+            return f'Potencialização dos valores: {a ** b} \nPotencialização inversa dos valores: {b ** a}'
+        else:
+            return f'Potencialização dos valores: {a ** b}'
     else:
         return "Operação inválida. Por favor, escolha uma operação válida."
 
