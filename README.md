@@ -6,8 +6,8 @@ Bem-vindo ao meu repositório de projetos em Python! Este espaço foi criado par
 
 | Projeto | Descrição | Status |
 | :--- | :--- | :--- |
-| [🧮 Calculadora Simples](./Calculadora_Simples/calculadora-simples.py) | Calculadora robusta com tratamento de erros e múltiplas entradas. | Finalizado |
-| [🔐 Gerador de Senhas](./Gerador_de_Senha/geradorsenha.py) | Gerador com análise de força e histórico de logs. | Finalizado |
+| [🧮 Calculadora Simples](./Calculadora_Simples/) | Calculadora robusta com tratamento de erros e múltiplas entradas. | Finalizado |
+| [🔐 Gerador de Senhas](./Gerador_de_Senha/) | Gerador com análise de força e histórico de logs. | Em etapa final |
 | ⏳ Em breve | Novo projeto em desenvolvimento... | Planejado |
 
 ## 🛠️ Habilidades Demonstradas
