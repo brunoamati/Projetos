@@ -66,7 +66,7 @@ while True:
             '4': '/', '/': '/', 'divisao': '/', 'divisão': '/',
             '5': '**', '**': '**', 'potencialização': '**', 'potencializacao': '**', 'potencia': '**',
         }
-        escolha = input("Escolha uma operação: ").strip()
+        escolha = input("Escolha uma operação: ").strip().lower
         
         if escolha in opcoes:
             op = opcoes[escolha]
